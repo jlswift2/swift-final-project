@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 function LoginForm() {
     const [formData, setFormData] = useState({
-        email: "",
+        username: "",
         password: "",
       });
 
@@ -15,19 +15,27 @@ function LoginForm() {
 
     function handleSubmit (e) {
         e.preventDefault();
-        console.log(formData)
-    }
+        fetch("/login", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData ),
+          })
+            .then((r) => r.json())
+            .then((user) => console.log(user));
+        }
   
   
     return (
     <div>
         <h1>Login Form</h1>
         <form onSubmit={handleSubmit}>
-            <label htmlFor="email">Email:</label>
+            <label htmlFor="username">Username:</label>
             <input
-                type="email"
-                name="email"
-                value={formData.email}
+                type="text"
+                name="username"
+                value={formData.username}
                 onChange={handleFormChange}
             />
             <label htmlFor="password">Password:</label>
