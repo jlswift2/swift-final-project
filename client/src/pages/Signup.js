@@ -1,10 +1,10 @@
 import React from 'react'
 import SignupForm from '../components/SignupForm'
 
-function Signup() {
+function Signup({ handleLogin }) {
   return (
     <div>
-        <SignupForm />
+        <SignupForm handleLogin={handleLogin} />
     </div>
   )
 }

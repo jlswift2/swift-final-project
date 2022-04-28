@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
-function SignupForm() {
+function SignupForm({ handleLogin }) {
     const [formData, setFormData] = useState({
         username: "",
         password: "",
@@ -9,6 +10,8 @@ function SignupForm() {
         first_name: "",
         last_name: ""
       });
+    
+    let navigate = useNavigate()
 
     function handleFormChange(e) {
     setFormData({
@@ -27,7 +30,10 @@ function SignupForm() {
             body: JSON.stringify(formData),
           })
             .then((r) => r.json())
-            .then((data) => console.log(data));
+            .then((user) => {
+                handleLogin(user)
+                navigate('/')
+            });
         }
   
   
