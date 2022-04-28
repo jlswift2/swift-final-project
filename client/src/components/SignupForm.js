@@ -14,20 +14,32 @@ function SignupForm({ handleLogin }) {
     let navigate = useNavigate()
 
     function handleFormChange(e) {
-    setFormData({
-        ...formData,
-        [e.target.name]: e.target.value
-    });
+        if (e.target.name === "profile_image") {
+            setFormData({
+                ...formData,
+                [e.target.name]: e.target.files[0] 
+            })
+        } else { 
+            setFormData({
+                ...formData,
+                [e.target.name]: e.target.value
+            });
+        }
     }
 
     function handleSubmit (e) {
         e.preventDefault();
+        let fd = new FormData()
+        fd.append('username', formData.username)
+        fd.append('password', formData.password)
+        fd.append('password_confirmation', formData.password_confirmation)
+        fd.append('email', formData.email)
+        fd.append('first_name', formData.first_name)
+        fd.append('last_name', formData.last_name)
+        fd.append('profile_image', formData.profile_image)
         fetch("/signup", {
             method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData),
+            body: (fd),
           })
             .then((r) => r.json())
             .then((user) => {
@@ -35,7 +47,7 @@ function SignupForm({ handleLogin }) {
                 navigate('/')
             });
         }
-  
+        
   
     return (
         <div>
@@ -82,6 +94,12 @@ function SignupForm({ handleLogin }) {
                     name="password_confirmation"
                     value={formData.password_confirmation}
                     onChange={handleFormChange}
+                />
+                <input 
+                    type="file" 
+                    name="profile_image"
+                    accept="image/png, image/jpeg" 
+                    onChange={handleFormChange} 
                 />
                 <button type="submit">Submit</button>
             </form>
