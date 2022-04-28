@@ -1,12 +1,13 @@
 import { Routes, Route } from "react-router-dom";
-import { Outlet } from "react-router-dom"
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup'
+import Layout from './components/Layout'
 import { useState, useEffect } from "react";                                                           
 
 function App() {
   const [user, setUser] = useState(null);
+  // user={user} setUser={setUser}
 
   useEffect(() => {
     fetch("/me").then((response) => {
@@ -23,14 +24,12 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/">
+        <Route path="/" element={<Layout user={user} setUser={setUser} />}>
           <Route index element={<Home />} />
           <Route path="login" element={<Login handleLogin={handleLogin} />} />
           <Route path="signup" element={<Signup handleLogin={handleLogin}/>} />
-
         </Route>
       </Routes>
-      <Outlet />
     </div>
   );
 }
