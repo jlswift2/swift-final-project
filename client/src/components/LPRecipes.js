@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import RecipeCard from './RecipeCard';
 
-function Recipes( {user} ) {
+function LPRecipes( {user} ) {
   const [recipes, setRecipes] = useState([])
 
   useEffect( () => {
@@ -23,4 +23,4 @@ function Recipes( {user} ) {
   )
 }
 
-export default Recipes
+export default LPRecipes

@@ -6,7 +6,6 @@ function RecipesBook() {
   return (
     <div>
       RecipesPage
-      <Recipe />
     </div>
   )
 }
