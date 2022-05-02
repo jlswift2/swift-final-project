@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :recipes, only: [:index, :show, :create]
   
   post "/signup", to: 'users#create'
   get "/me", to: "users#show"
@@ -7,5 +6,6 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete "/logout", to: "sessions#destroy"
 
-  # get "/recipes/:id", to: "recipes#user_recipes"
+  get "/user/:id/recipes", to: "recipes#user_recipes"
+  get "/recipes/:recipeId", to: "recipes#show"
 end
