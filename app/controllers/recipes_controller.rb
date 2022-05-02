@@ -7,9 +7,15 @@ class RecipesController < ApplicationController
         render json: recipe, status: :ok
     end
 
-    def user_recipes
+    def user_recipes_limited
         user = User.find_by(id: params[:id])
         recipes = user.recipes.last(3).reverse
+        render json: recipes, status: :ok
+    end
+
+    def user_recipes_all
+        user = User.find_by(id: params[:id])
+        recipes = user.recipes.reverse
         render json: recipes, status: :ok
     end
 

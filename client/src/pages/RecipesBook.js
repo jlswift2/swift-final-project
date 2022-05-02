@@ -1,11 +1,13 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
-import Recipe from './Recipe'
+import RBRecipes from '../components/RBRecipes'
+import { Link } from 'react-router-dom'
 
-function RecipesBook() {
+function RecipesBook({ user }) {
   return (
     <div>
-      RecipesPage
+      <h1>RecipesPage</h1>
+      <Link to="/land">Return to your landing page</Link>
+      <RBRecipes user={user}/>
     </div>
   )
 }

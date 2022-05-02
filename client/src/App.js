@@ -36,7 +36,7 @@ function App() {
           <Route path="land" element={<LandingPage user={user}/>}>
           </Route> 
           <Route path="recipes">
-            <Route index element={<RecipesBook />} />
+            <Route index element={<RecipesBook user={user}/>} />
             <Route path=":recipeId" element={<Recipe />} /> 
           </Route>
 
