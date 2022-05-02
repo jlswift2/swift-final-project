@@ -6,7 +6,7 @@ function LandingPage ({ user }) {
   return (
     <div>
         <Greeting user={user}/>
-        <Recipes />
+        <Recipes user={user} />
     </div>
   )
 }
