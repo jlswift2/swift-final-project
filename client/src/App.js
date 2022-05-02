@@ -4,6 +4,8 @@ import Login from './pages/Login';
 import Signup from './pages/Signup'
 import Layout from './components/Layout'
 import LandingPage from './pages/LandingPage'
+import RecipesBook from './pages/RecipesBook'
+import Recipe from "./pages/Recipe";
 import { useState, useEffect } from "react";                                                           
 
 function App() {
@@ -31,8 +33,12 @@ function App() {
           <Route index element={<Home />} />
           <Route path="login" element={<Login handleLogin={handleLogin} />} />
           <Route path="signup" element={<Signup handleLogin={handleLogin}/>} />
-          <Route path="land" element={<LandingPage user={user}/>}>  
+          <Route path="land" element={<LandingPage user={user}/>}>
           </Route> 
+          <Route path="recipes" element={<RecipesBook />}>
+            <Route path=":recipeId" element={<Recipe />} /> 
+          </Route>
+
         </Route>
       </Routes>
     </div>
