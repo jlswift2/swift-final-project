@@ -14,6 +14,8 @@ function App() {
     fetch("/me").then((response) => {
       if (response.ok) {
         response.json().then((user) => setUser(user));
+      } else {
+        console.log('oop!')
       }
     });
   }, []);
@@ -29,7 +31,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="login" element={<Login handleLogin={handleLogin} />} />
           <Route path="signup" element={<Signup handleLogin={handleLogin}/>} />
-          <Route path="land" element={<LandingPage />}>  
+          <Route path="land" element={<LandingPage user={user}/>}>  
           </Route> 
         </Route>
       </Routes>
