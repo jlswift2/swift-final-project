@@ -3,21 +3,30 @@ import { useParams } from 'react-router-dom'
 
 function Recipe() {
     const {recipeId} = useParams()
-    console.log(recipeId)
     const [recipe, setRecipe] = useState(null)
-    let tags = recipe.tags.map(tag => {
-      return(tag.title)
-    })
+    let tags 
     
-    let steps = recipe.steps.map(step => {
-        return(<p>{step}</p>)
-    }) 
+    if (recipe) {
+      tags = recipe.tags.map(tag => {
+      return(tag.title)
+    })} else {
+      tags = "loading"
+    }
+    
+    let steps
+    if(recipe) {
+      steps = recipe.steps.map(step => {
+          return(<p>{step}</p>)
+      })} else {
+        steps = "loading"
+    }
 
     useEffect(() =>{
         fetch(`/recipes/${recipeId}`)
         .then(resp => resp.json())
         .then(data => setRecipe(data))
     }, [])
+
   
     return (
     <div>
