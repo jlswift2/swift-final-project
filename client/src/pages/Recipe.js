@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 function Recipe() {
     const {recipeId} = useParams()
@@ -30,6 +30,7 @@ function Recipe() {
   
     return (
     <div>
+      <Link to="/recipes">Return to your recipe book</Link>
       <h3>{recipe ? recipe.name : "loading"}</h3>
       <h4>{recipe ? recipe.description : "loading"}</h4>
       <h4>{recipe ? recipe.prep_time : "loading"}</h4>
