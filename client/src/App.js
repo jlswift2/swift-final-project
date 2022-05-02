@@ -35,7 +35,8 @@ function App() {
           <Route path="signup" element={<Signup handleLogin={handleLogin}/>} />
           <Route path="land" element={<LandingPage user={user}/>}>
           </Route> 
-          <Route path="recipes" element={<RecipesBook />}>
+          <Route path="recipes">
+            <Route index element={<RecipesBook />} />
             <Route path=":recipeId" element={<Recipe />} /> 
           </Route>
 
