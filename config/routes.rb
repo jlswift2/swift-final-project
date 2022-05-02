@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete "/logout", to: "sessions#destroy"
 
-  get "/user/:id/recipes", to: "recipes#user_recipes"
+  get "/user/:id/recipes", to: "recipes#user_recipes_limited"
+  get "/user/:id/recipes/all", to: "recipes#user_recipes_all"
   get "/recipes/:recipeId", to: "recipes#show"
 end
