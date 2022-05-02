@@ -9,7 +9,7 @@ class RecipesController < ApplicationController
 
     def user_recipes
         user = User.find_by(id: params[:id])
-        recipes = user.recipes
+        recipes = user.recipes.last(3).reverse
         render json: recipes, status: :ok
     end
 
