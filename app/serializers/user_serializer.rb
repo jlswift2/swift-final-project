@@ -1,5 +1,6 @@
 class UserSerializer < ActiveModel::Serializer
   attributes :id, :username, :email, :first_name, :last_name, :friend_code, :profile_image
+
   include Rails.application.routes.url_helpers
 
   def profile_image
