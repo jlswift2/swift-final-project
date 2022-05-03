@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   get "/user/:id/recipes", to: "recipes#user_recipes_limited"
   get "/user/:id/recipes/all", to: "recipes#user_recipes_all"
   get "/recipes/:recipeId", to: "recipes#show"
+
+  get "/user/:id/follows", to: "follows#user_follows"
 end
