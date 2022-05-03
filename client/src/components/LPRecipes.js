@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 import RecipeCard from './RecipeCard';
 
 function LPRecipes( {user} ) {
   const [recipes, setRecipes] = useState([])
+  const navigate = useNavigate()
 
   useEffect( () => {
     if (user) {
@@ -18,6 +20,7 @@ function LPRecipes( {user} ) {
   return (
     <div>
       <h2>Recipes</h2>
+      <button onClick={() => navigate("/recipes/new")} >New Recipe</button>
       {displayRecipes}
     </div>
   )

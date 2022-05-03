@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import RecipeCard from './RecipeCard';
+import { useNavigate } from 'react-router-dom';
 
 function RBRecipes( {user} ) {
   const [recipes, setRecipes] = useState([])
+  const navigate = useNavigate()
+
   useEffect( () => {
     if (user) {
       fetch(`/user/${user.id}/recipes/all`)
@@ -17,6 +20,7 @@ function RBRecipes( {user} ) {
   return (
     <div>
       <h2>Recipes</h2>
+      <button onClick={() => navigate("/recipes/new")} >New Recipe</button>
       {displayRecipes}
     </div>
   )
