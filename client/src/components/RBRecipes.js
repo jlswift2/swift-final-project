@@ -12,7 +12,7 @@ function RBRecipes( {user} ) {
   }, [user])
 
   const displayRecipes = recipes.map(recipe => {
-    return(<RecipeCard key={recipe.id} recipe={recipe}/>)})
+    return(<RecipeCard key={recipe.id} recipe={recipe} />)})
 
   return (
     <div>

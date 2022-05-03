@@ -7,6 +7,7 @@ import LandingPage from './pages/LandingPage'
 import RecipesBook from './pages/RecipesBook'
 import Recipe from "./pages/Recipe";
 import { useState, useEffect } from "react";                                                           
+import FriendRBRecipes from "./components/FriendRBRecipes";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -37,6 +38,7 @@ function App() {
           </Route> 
           <Route path="recipes">
             <Route index element={<RecipesBook user={user}/>} />
+            <Route path="friends/:friendId" element={<FriendRBRecipes user={user}/>} /> 
             <Route path=":recipeId" element={<Recipe />} /> 
           </Route>
 
