@@ -100,10 +100,11 @@ function NewRecipeForm({ handleFormChange, formData, steps, handleStepChange, ha
                             </button>
                         )}
                         {steps.length > 1 &&
+                        (
                             <button type="button" onClick={() => handleRemove(index)}>
                                 <span>Remove</span>
                             </button>
-                        }
+                        )}
                     </div>
                 ))}
             </form>
