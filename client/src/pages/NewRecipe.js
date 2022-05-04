@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import IngredientsForm from '../components/IngredientsForm';
 import NewRecipeForm from '../components/NewRecipeForm';
+import TagsForm from '../components/TagsForm';
 
 function NewRecipe({ user }) {
     const [formData, setFormData] = useState({});
@@ -56,6 +57,18 @@ function NewRecipe({ user }) {
         setIngredients(newIngredients)
     }
 
+    function handleTagChange(e, index) {
+
+    }
+
+    function handleTagAdd() {
+
+    }
+
+    function handleTagRemove(index) {
+
+    }
+
     function onSubmit() {
         console.log("LOOL")
     }
@@ -75,6 +88,12 @@ function NewRecipe({ user }) {
                 handleIngredientChange={handleIngredientChange}
                 handleIngredientAdd={handleIngredientAdd}
                 handleIngredientRemove={handleIngredientRemove}
+            />
+            <TagsForm
+                tags={tags}
+                handleTagChange={handleTagChange}
+                handleTagAdd={handleTagAdd}
+                handleTagRemove={handleTagRemove}
             />
             <button type="submit">Submit</button>
         </div>
