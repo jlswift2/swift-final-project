@@ -6,11 +6,12 @@ function LogoutButton({ user, setUser}) {
     let navigate = useNavigate()
 
     let button
-        if (user){
-            button = <button onClick={handleLogout}>Logout</button>
-        } else {
-            button = <button onClick={() => navigate('/login')}>Login</button>
-        }
+
+    if (user){
+        button = <button onClick={handleLogout}>Logout</button>
+    } else {
+        button = <button onClick={() => navigate('/login')}>Login</button>
+    }
 
     function handleLogout () {
         fetch("/logout", {
