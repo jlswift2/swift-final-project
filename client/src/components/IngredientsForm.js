@@ -1,7 +1,6 @@
 import React from 'react'
 
 function IngredientsForm({ ingredients, handleIngredientChange, handleIngredientAdd, handleIngredientRemove }) {
-    console.log(ingredients)
 
     function onIngredientChange(e, index) {
         handleIngredientChange(e, index)
@@ -16,7 +15,7 @@ function IngredientsForm({ ingredients, handleIngredientChange, handleIngredient
     }
 
     return (
-        <div>LOL
+        <div>
             <label htmlFor="ingredients">Enter Ingredients:</label>
             {ingredients.map((singleIngredient, index) => (
                 <div key={index}>
