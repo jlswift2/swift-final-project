@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import IngredientsForm from '../components/IngredientsForm';
 import NewRecipeForm from '../components/NewRecipeForm';
+import Steps from '../components/Steps';
 import TagsForm from '../components/TagsForm';
 
 function NewRecipe({ user }) {
@@ -44,7 +45,6 @@ function NewRecipe({ user }) {
         const newIngredients = [...ingredients]
         newIngredients[index][name] = value
         setIngredients(newIngredients)
-        console.log(newIngredients)
     }
 
     function handleIngredientAdd() {
@@ -58,19 +58,26 @@ function NewRecipe({ user }) {
     }
 
     function handleTagChange(e, index) {
-
+        const newTags = [...tags]
+        newTags[index] = e.target.value
+        setTags(newTags) 
     }
 
     function handleTagAdd() {
-
+        setTags([...tags, "Add New Tag"])
     }
 
     function handleTagRemove(index) {
-
+        const newTags = [...tags]
+        newTags.splice(index, 1)
+        setTags(newTags)
     }
 
     function onSubmit() {
-        console.log("LOOL")
+        console.log(formData)
+        console.log(steps)
+        console.log(ingredients)
+        console.log(tags)
     }
 
     return(
@@ -89,13 +96,19 @@ function NewRecipe({ user }) {
                 handleIngredientAdd={handleIngredientAdd}
                 handleIngredientRemove={handleIngredientRemove}
             />
+            <Steps
+                steps={steps}
+                handleStepChange={handleStepChange}
+                handleStepAdd={handleStepAdd}
+                handleStepRemove={handleStepRemove}
+            />
             <TagsForm
                 tags={tags}
                 handleTagChange={handleTagChange}
                 handleTagAdd={handleTagAdd}
                 handleTagRemove={handleTagRemove}
             />
-            <button type="submit">Submit</button>
+            <button type="submit" onClick={onSubmit}>Submit</button>
         </div>
     )
 }
