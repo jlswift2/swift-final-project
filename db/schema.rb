@@ -56,7 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_28_170132) do
   end
 
   create_table "recipe_ingredients", force: :cascade do |t|
-    t.integer "quantity"
+    t.string "quantity"
     t.string "measurement"
     t.bigint "recipe_id", null: false
     t.bigint "ingredient_id", null: false

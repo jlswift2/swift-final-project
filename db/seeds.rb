@@ -31,5 +31,5 @@ end
 end 
 
 50.times do
-    RecipeIngredient.create(quantity: Faker::Number.between(from: 1, to: 10) , measurement: "cup", recipe_id: Recipe.ids.sample, ingredient_id: Ingredient.ids.sample)
+    RecipeIngredient.create(quantity: Faker::Number.between(from: 1, to: 10).to_s , measurement: "CUP", recipe_id: Recipe.ids.sample, ingredient_id: Ingredient.ids.sample)
 end
