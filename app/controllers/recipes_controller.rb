@@ -19,6 +19,10 @@ class RecipesController < ApplicationController
         render json: recipes, status: :ok
     end
 
+    def create 
+        byebug
+    end
+
     private
 
     def render_unprocessable_entity(exception)
