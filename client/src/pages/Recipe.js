@@ -21,9 +21,11 @@ function Recipe() {
     }
     
     let steps
+    let count = 0
     if(recipe) {
       steps = recipe.steps.map(step => {
-          return(<p>{step}</p>)
+          count += 1
+          return(<p>Step {count}: {step}</p>)
       })} else {
         steps = "loading"
     }
