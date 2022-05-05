@@ -1,50 +1,16 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-function NewRecipeForm({ handleFormChange, formData, steps, handleStepChange, handleStepAdd, handleStepRemove }) {
-    // const [formData, setFormData] = useState({});
-    // const [steps, setSteps] = useState(["start here"])
+function NewRecipeForm({ handleFormChange, formData }) {
     let navigate = useNavigate()
-
-    // function handleFormChange (e) {
-    //     if (e.target.name === "recipe_image") {
-    //         setFormData({
-    //             ...formData,
-    //             [e.target.name]: e.target.files[0] 
-    //         })
-    //     } else { 
-    //         setFormData({
-    //             ...formData,
-    //             [e.target.name]: e.target.value
-    //         })};
-    // }
 
     function onChange (e) {
         handleFormChange(e)
     }
 
-    function onStepChange (e, index) {
-        handleStepChange(e, index)
-    }
-
-    // function handleStepChange (e, index) {
-    //     const newSteps = [...steps]
-    //     newSteps[index] = e.target.value
-    //     setSteps(newSteps)
-    //     console.log(newSteps)      
-    // }
-
-    function handleAdd () {
-        handleStepAdd()
-    }
-
-    function handleRemove (index) {
-        handleStepRemove(index)
-    }
-
     return (
         <div>
-            <h1>Signup Form</h1>
+            <h1>New Recipe</h1>
             <form>
                 <label htmlFor="name">Recipe Name:</label>
                 <input
@@ -83,30 +49,6 @@ function NewRecipeForm({ handleFormChange, formData, steps, handleStepChange, ha
                     accept="image/png, image/jpeg" 
                     onChange={onChange} 
                 />
-                <label htmlFor="steps">Enter Steps:</label>
-                {steps.map((value, index) => (
-                    <div key={index}>
-                        <input
-                            type="text"
-                            name="step"
-                            value={value}
-                            onChange={(e) => onStepChange(e, index)}
-                            required
-                        />
-                        {steps.length - 1 === index &&
-                        (
-                            <button type="button" onClick={handleAdd}>
-                                <span>Add a Step</span>
-                            </button>
-                        )}
-                        {steps.length > 1 &&
-                        (
-                            <button type="button" onClick={() => handleRemove(index)}>
-                                <span>Remove</span>
-                            </button>
-                        )}
-                    </div>
-                ))}
             </form>
         </div>
     )
