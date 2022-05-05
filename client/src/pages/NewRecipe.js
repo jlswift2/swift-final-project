@@ -7,9 +7,11 @@ import TagsForm from '../components/TagsForm';
 
 function NewRecipe({ user }) {
     const [formData, setFormData] = useState({});
+    const [recipeImg, setRecipeImg] = useState({})
     const [steps, setSteps] = useState(["start here"])
     const [ingredients, setIngredients] = useState([{ingredient: "Enter Ingredient", quantity: "1", measurement: "LB"}])
     const [tags, setTags] = useState(["Enter tags here"])
+
     function handleFormChange (e) {
         if (e.target.name === "recipe_image") {
             setFormData({
@@ -22,6 +24,10 @@ function NewRecipe({ user }) {
                 [e.target.name]: e.target.value
             })
         };
+    }
+
+    function handleImgChange(e) {
+        setRecipeImg({[e.target.name]: e.target.value})
     }
 
     function handleStepChange (e, index) {
@@ -73,22 +79,32 @@ function NewRecipe({ user }) {
         setTags(newTags)
     }
 
-    function onSubmit() {
-        console.log(formData)
-        console.log(steps)
-        console.log(ingredients)
-        console.log(tags)
+    function onSubmit(e) {
+        e.preventDefault();
+
+        let newform = {...formData}
+        newform["ingredients"] = ingredients
+        newform["steps"] = steps
+        newform["tags"] = tags
+  
+        fetch('/recipes/new',{
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newform),
+        })
+        .then((r) => r.json())
+        .then((data) => console.log(data))
     }
 
     return(
         <div>
             <NewRecipeForm 
                 formData={formData}
-                steps={steps} 
                 handleFormChange={handleFormChange}
-                handleStepChange={handleStepChange}
-                handleStepAdd={handleStepAdd}
-                handleStepRemove={handleStepRemove} 
+                handleImgChange={handleImgChange}
             />
             <IngredientsForm
                 ingredients={ingredients}
@@ -113,3 +129,9 @@ function NewRecipe({ user }) {
     )
 }
 export default NewRecipe
+
+
+// send all data - image in json fetch
+//     send back recipe data
+//     .then or async await   
+//         send img as FormData ***make sure img not required on backend

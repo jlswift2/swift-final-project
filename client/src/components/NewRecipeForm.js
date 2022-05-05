@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-function NewRecipeForm({ handleFormChange, formData }) {
-    let navigate = useNavigate()
+function NewRecipeForm({ handleFormChange, formData, handleImgChange }) {
 
     function onChange (e) {
         handleFormChange(e)
@@ -47,7 +46,7 @@ function NewRecipeForm({ handleFormChange, formData }) {
                     type="file" 
                     name="recipe_image"
                     accept="image/png, image/jpeg" 
-                    onChange={onChange} 
+                    onChange={handleImgChange} 
                 />
             </form>
         </div>
