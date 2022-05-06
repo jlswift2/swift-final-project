@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import RecipeCard from './RecipeCard';
 import { useNavigate } from 'react-router-dom';
 
-function RBRecipes( {user} ) {
+function RBRecipes( {user, query} ) {
   const [recipes, setRecipes] = useState([])
   const navigate = useNavigate()
 
@@ -14,7 +14,25 @@ function RBRecipes( {user} ) {
     }
   }, [user])
 
-  const displayRecipes = recipes.map(recipe => {
+  const tagCollection = recipes.map(recipe => {
+    return recipe.tags.map(tag => {
+      return tag.title
+    })
+  })
+
+  console.log(tagCollection)
+
+  const filteredRecipes = recipes.filter(recipe => {
+    if (recipe.name === "") {
+      return recipe;
+    } else if (recipe.name.toLowerCase().includes(query.toLowerCase())) {
+      return recipe;
+    } else if (recipe.tags.map(tag => tag.title.toLowerCase()).includes(query.toLowerCase())) {
+      return recipe;
+    }
+  })
+
+  const displayRecipes = filteredRecipes.map(recipe => {
     return(<RecipeCard key={recipe.id} recipe={recipe} />)})
 
   return (
