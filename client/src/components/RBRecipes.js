@@ -27,7 +27,7 @@ function RBRecipes( {user, query} ) {
       return recipe;
     } else if (recipe.name.toLowerCase().includes(query.toLowerCase())) {
       return recipe;
-    } else if (recipe.tags.map(tag => tag.title.toLowerCase()).includes(query.toLowerCase())) {
+    } else if (recipe.tags.find(tag => tag.title.toLowerCase().includes(query.toLowerCase()))) {
       return recipe;
     }
   })
