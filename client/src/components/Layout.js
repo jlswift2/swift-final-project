@@ -5,9 +5,12 @@ import Navbar from './Navbar'
 function Layout({ user, setUser }) {
   return (
     <div>
-        <h1>Layout</h1>
-        <Navbar user={user} setUser={setUser}/>
-        <Outlet />
+        <div className="fixed h-full w-1/6 left-0">
+          <Navbar user={user} setUser={setUser}/>
+        </div>
+        <div className="absolute w-5/6 right-0 pl-5">
+          <Outlet />
+        </div>
     </div>
   )
 }
