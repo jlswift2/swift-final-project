@@ -35,10 +35,11 @@ function LoginForm({ handleLogin }) {
   
     return (
     <div>
-        <h1>Login Form</h1>
+        <h1 className='font-serif text-4xl font-bold text-primary mt-4 mb-12 text-center'>Login Form</h1>
         <form onSubmit={handleSubmit}>
             <label htmlFor="username">Username:</label>
             <input
+                className="font-serif w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"
                 type="text"
                 name="username"
                 value={formData.username}
@@ -46,12 +47,13 @@ function LoginForm({ handleLogin }) {
             />
             <label htmlFor="password">Password:</label>
             <input
+                className="font-serif w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"
                 type="password"
                 name="password"
                 value={formData.password}
                 onChange={handleFormChange}
             />
-            <button type="submit">Submit</button>
+            <button className="m-auto font-serif w-full text-center py-1 px-2 mt-6 bg-green-200 rounded-full text-base hover:bg-green-400 transition duration-300 ease-in-out" type="submit">Submit</button>
         </form>
     </div>
     )
