@@ -8,6 +8,7 @@ class UsersController < ApplicationController
           user.friend_code = SecureRandom.hex(5)
           user.save
           render json: user, status: :created
+          session[:user_id] = user.id 
       else
         render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
       end
