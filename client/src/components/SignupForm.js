@@ -43,11 +43,10 @@ function SignupForm({ handleLogin }) {
           })
             .then((r) => r.json())
             .then((user) => {
-                handleLogin(user)
+                handleLogin(user, formData)
                 navigate('/land')
-            });
-        }
-        
+            })
+        }  
   
     return (
         <div>
