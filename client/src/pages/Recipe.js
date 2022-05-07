@@ -15,7 +15,7 @@ function Recipe() {
     let tags
     if (recipe) {
       tags = recipe.tags.map(tag => {
-      return(tag.title)
+      return(<span key={tag.id}>tag.title</span>)
     })} else {
       tags = "loading"
     }
@@ -25,7 +25,7 @@ function Recipe() {
     if(recipe) {
       steps = recipe.steps.map(step => {
           count += 1
-          return(<p>Step {count}: {step}</p>)
+          return(<p key={step}>Step {count}: {step}</p>)
       })} else {
         steps = "loading"
     }
