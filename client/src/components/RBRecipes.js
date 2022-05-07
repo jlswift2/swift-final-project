@@ -20,8 +20,6 @@ function RBRecipes( {user, query} ) {
     })
   })
 
-  console.log(tagCollection)
-
   const filteredRecipes = recipes.filter(recipe => {
     if (recipe.name === "") {
       return recipe;
