@@ -9,11 +9,11 @@ function LogoutButton({ user, setUser}) {
 
     if (user){
         button = <button onClick={handleLogout} className="flex w-full items-center p-2 text-base font-normal text-red-500 rounded-lg dark:text-red-500 hover:bg-gray-100 dark:hover:bg-gray-700">
-            <span className="flex-1 ml-3 whitespace-nowrap">Logout</span>
+            <span className="flex-1 ml-3 whitespace-nowrap text-xl">Logout</span>
             </button>
     } else {
-        button = <button onClick={() => navigate('/login')} className="flex items-center p-2 text-base font-normal text-green-500 rounded-lg dark:text-green-500 hover:bg-gray-100 dark:hover:bg-gray-700">
-            <span className="flex-1 ml-3 whitespace-nowrap">Login</span>
+        button = <button onClick={() => navigate('/login')} className="flex w-full items-center p-2 text-base font-normal text-green-500 rounded-lg dark:text-green-500 hover:bg-gray-100 dark:hover:bg-gray-700">
+            <span className="flex-1 ml-3 whitespace-nowrap text-xl">Login</span>
             </button>
     }
 
