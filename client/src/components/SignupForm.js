@@ -50,10 +50,11 @@ function SignupForm({ handleLogin }) {
   
     return (
         <div>
-            <h1>Signup Form</h1>
+            <h1 className='font-serif text-4xl font-bold text-primary mt-4 mb-12 text-center'>Signup Form</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="first_name">First Name:</label>
                 <input
+                    className="font-serif w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"
                     type="text"
                     name="first_name"
                     value={formData.first_name}
@@ -61,6 +62,7 @@ function SignupForm({ handleLogin }) {
                 />
                 <label htmlFor="last_name">Last Name:</label>
                 <input
+                    className="font-serif w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"
                     type="text"
                     name="last_name"
                     value={formData.last_name}
@@ -68,6 +70,7 @@ function SignupForm({ handleLogin }) {
                 />
                 <label htmlFor="email">Email Address:</label>
                 <input
+                    className="font-serif w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"
                     type="email"
                     name="email"
                     value={formData.email}
@@ -75,6 +78,7 @@ function SignupForm({ handleLogin }) {
                 />
                 <label htmlFor="username">Desired Username:</label>
                 <input
+                    className="font-serif w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"
                     type="text"
                     name="username"
                     value={formData.username}
@@ -82,6 +86,7 @@ function SignupForm({ handleLogin }) {
                 />
                 <label htmlFor="password">Password:</label>
                 <input
+                    className="font-serif w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"
                     type="password"
                     name="password"
                     value={formData.password}
@@ -89,18 +94,20 @@ function SignupForm({ handleLogin }) {
                 />
                 <label htmlFor="password_confirmation">Confirm Password:</label>
                 <input
+                    className="font-serif w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"
                     type="password"
                     name="password_confirmation"
                     value={formData.password_confirmation}
                     onChange={handleFormChange}
                 />
-                <input 
+                <input
+                    className="font-serif w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4" 
                     type="file" 
                     name="profile_image"
                     accept="image/png, image/jpeg" 
                     onChange={handleFormChange} 
                 />
-                <button type="submit">Submit</button>
+                <button type="submit" className="m-auto font-serif w-full text-center py-1 px-2 mt-6 bg-green-200 rounded-full text-base hover:bg-green-400 transition duration-300 ease-in-out">Submit</button>
             </form>
         </div>
     )
