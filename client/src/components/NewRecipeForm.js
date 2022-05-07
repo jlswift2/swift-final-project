@@ -9,10 +9,11 @@ function NewRecipeForm({ handleFormChange, formData, handleImgChange }) {
 
     return (
         <div>
-            <h1>New Recipe</h1>
+            <h1 className='font-serif text-4xl font-bold text-primary mt-4 mb-12 text-center'>New Recipe</h1>
             <form>
                 <label htmlFor="name">Recipe Name:</label>
                 <input
+                    className="font-serif w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"
                     type="text"
                     name="name"
                     value={formData.name}
@@ -20,6 +21,7 @@ function NewRecipeForm({ handleFormChange, formData, handleImgChange }) {
                 />
                 <label htmlFor="description">Description:</label>
                 <input
+                    className="font-serif w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"
                     type="text"
                     name="description"
                     value={formData.description}
@@ -27,6 +29,7 @@ function NewRecipeForm({ handleFormChange, formData, handleImgChange }) {
                 />
                 <label htmlFor="prep_time">Prep Time (in minutes):</label>
                 <input
+                    className="font-serif w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"
                     type="number"
                     min="0"
                     name="prep_time"
@@ -35,6 +38,7 @@ function NewRecipeForm({ handleFormChange, formData, handleImgChange }) {
                 />
                 <label htmlFor="total_time">Total Time (in minutes):</label>
                 <input
+                    className="font-serif w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"
                     type="number"
                     min="0"
                     name="total_time"
@@ -43,6 +47,7 @@ function NewRecipeForm({ handleFormChange, formData, handleImgChange }) {
                 />
                 <label htmlFor="recipe_image">Recipe Image:</label>
                 <input 
+                    className="font-serif w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"
                     type="file" 
                     name="recipe_image"
                     accept="image/png, image/jpeg" 
