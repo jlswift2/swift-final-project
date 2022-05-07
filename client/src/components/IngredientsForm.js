@@ -20,13 +20,14 @@ function IngredientsForm({ ingredients, handleIngredientChange, handleIngredient
             {ingredients.map((singleIngredient, index) => (
                 <div key={index}>
                     <input
+                        className="font-serif w-1/5 p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"
                         type="text"
                         name="quantity"
                         value={singleIngredient.quantity}
                         onChange={(e) => onIngredientChange(e, index)}
                         required
                     />
-                    <select name="measurement" onChange={(e) => onIngredientChange(e, index)}>
+                    <select className="font-serif w-1/5 p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4" name="measurement" onChange={(e) => onIngredientChange(e, index)}>
                         <option value="TSP">TSP</option>
                         <option value="TBSP">TBSP</option>
                         <option value="FL OZ">FL OZ</option>
@@ -46,23 +47,26 @@ function IngredientsForm({ ingredients, handleIngredientChange, handleIngredient
                         <option value=""></option>
                     </select>
                     <input
+                        className="font-serif w-1/2 p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"
                         type="text"
                         name="ingredient"
                         value={singleIngredient.ingredient}
                         onChange={(e) => onIngredientChange(e, index)}
                         required
                     />
-                    {ingredients.length - 1 === index &&
-                    (
-                        <button type="button" onClick={handleAdd}>
-                            <span>Add an Ingredient</span>
-                        </button>
-                    )}
                     {ingredients.length > 1 &&
-                        <button type="button" onClick={() => handleRemove(index)}>
-                            <span>Remove</span>
+                        <button type="button" className="font-serif w-1/8 text-center py-1 px-2 font-bold text-3xl text-red-200 hover:text-red-500 transition duration-300 ease-in-out" onClick={() => handleRemove(index)}>
+                            <span>-</span>
                         </button>
                     }
+                    {ingredients.length - 1 === index &&
+                    (
+                        <div className="flex">
+                            <button type="button" className="m-auto font-serif w-1/6 text-center py-1 px-2 bg-green-200 rounded-full text-base hover:bg-green-400 transition duration-300 ease-in-out" onClick={handleAdd}>
+                                <span>+</span>
+                            </button>
+                        </div>
+                    )}
                 </div>
             ))}
         </div>

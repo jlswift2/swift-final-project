@@ -100,7 +100,7 @@ function NewRecipe({ user }) {
     }
 
     return(
-        <div>
+        <div className='w-full max-w-xl m-auto mt-10 bg-white rounded-lg border border-primaryBorder shadow-default py-10 px-16 font-serif'>
             <NewRecipeForm 
                 formData={formData}
                 handleFormChange={handleFormChange}
@@ -124,7 +124,7 @@ function NewRecipe({ user }) {
                 handleTagAdd={handleTagAdd}
                 handleTagRemove={handleTagRemove}
             />
-            <button type="submit" onClick={onSubmit}>Submit</button>
+            <button type="submit" className="m-auto font-serif w-full text-center py-1 px-2 mt-6 bg-green-200 rounded-full text-base hover:bg-green-400 transition duration-300 ease-in-out" onClick={onSubmit}>Submit</button>
         </div>
     )
 }
