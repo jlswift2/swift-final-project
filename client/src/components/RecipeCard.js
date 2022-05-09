@@ -5,7 +5,11 @@ import { useNavigate } from 'react-router-dom'
 function RecipeCard({ recipe }) {
   let navigate = useNavigate()
   let tags = recipe.tags.map(tag => {
-    return(tag.title)
+    return(
+      <span className="text-xs float-right font-semibold inline-block py-1 px-2 uppercase rounded text-violet-600 bg-violet-200 last:ml-0 ml-1">
+        {tag.title}
+      </span>
+    )
   })
 
   function handleClick() {
@@ -13,10 +17,12 @@ function RecipeCard({ recipe }) {
   }
 
   return (
-    <div onClick={handleClick}>
-      <h3>{recipe.name}</h3>
-      <h4>{recipe.description}</h4>
-      <h6>{tags}</h6>
+    <div className="rounded overflow-hidden shadow-md shadow-gray-600" onClick={handleClick}>
+      <h3 className="font-serif mb-6 text-xl md:text-xl font-bold flex justify-center">{recipe.name}</h3>
+      <h4 className="font-serif italic text-lg flex justify-left">{recipe.description}</h4>
+      <div>
+        {tags}
+      </div>
     </div>
   )
 }
