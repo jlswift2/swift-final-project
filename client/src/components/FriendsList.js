@@ -17,9 +17,11 @@ function FriendsList({ user }) {
     })
 
     return (
-        <div>
-            <h3>Friends List</h3>
-            {friend}
+        <div className="w-1/2 m-auto">
+            <h3 className="font-serif mb-6 text-xl md:text-4xl uppercase font-bold flex justify-center">Friends List</h3>
+            <div className="grid grid-cols-3 gap-4 place-items-center">
+                {friend}
+            </div>
         </div>
     )
 }

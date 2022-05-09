@@ -5,7 +5,7 @@ function Friend({ friend }) {
     let link = `/recipes/friends/${friend.id}`
   
     return (
-        <div>
+        <div className="font-serif mb-6 text-xl md:text-xl flex justify-center">
             <Link to={link}>{friend.username}</Link>
         </div>
     )
