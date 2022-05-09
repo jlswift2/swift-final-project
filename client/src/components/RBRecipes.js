@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 function RBRecipes( {user, query} ) {
   const [recipes, setRecipes] = useState([])
-  const navigate = useNavigate()
 
   useEffect( () => {
     if (user) {
@@ -13,12 +12,6 @@ function RBRecipes( {user, query} ) {
       .then(data => setRecipes(data))
     }
   }, [user])
-
-  const tagCollection = recipes.map(recipe => {
-    return recipe.tags.map(tag => {
-      return tag.title
-    })
-  })
 
   const filteredRecipes = recipes.filter(recipe => {
     if (recipe.name === "") {
@@ -35,8 +28,6 @@ function RBRecipes( {user, query} ) {
 
   return (
     <div>
-      <h2>Recipes</h2>
-      <button onClick={() => navigate("/recipes/new")} >New Recipe</button>
       {displayRecipes}
     </div>
   )
