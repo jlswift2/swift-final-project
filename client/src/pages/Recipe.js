@@ -15,7 +15,7 @@ function Recipe() {
     let tags
     if (recipe) {
       tags = recipe.tags.map(tag => {
-      return(<span key={tag.id}>tag.title</span>)
+      return(<span key={tag.id}>{tag.title}</span>)
     })} else {
       tags = "loading"
     }
@@ -30,6 +30,18 @@ function Recipe() {
         steps = "loading"
     }
 
+    let ingredients 
+    if(recipe) {
+      ingredients=recipe.recipe_ingredients.map(ing => {
+        return(<p key={ing.id}>{ing.quantity} {ing.measurement ? ing.measurement : null} {ing.ingredient.name}</p>)
+      })} else {
+        ingredients = "loading"
+      }
+
+    console.log(ingredients)
+
+
+
     return (
     <div>
       <button onClick={() => navigate(-1)}>Go back</button>
@@ -38,6 +50,7 @@ function Recipe() {
       <h4>{recipe ? recipe.prep_time : "loading"}</h4>
       <h4>{recipe ? recipe.total_time : "loading"}</h4>
       {steps}
+      {ingredients}
       <h5>{tags}</h5>
     </div>
   )
