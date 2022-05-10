@@ -12,7 +12,7 @@ function Signup({ handleLogin }) {
 )
   
   return (
-    <div className='w-full max-w-xl m-auto absolute top-[10%] left-[25%] bg-white rounded-lg border border-primaryBorder shadow-default py-10 px-16 font-serif'>
+    <div className='w-full max-w-xl m-auto absolute top-[8%] left-[25%] bg-white rounded-lg border border-primaryBorder shadow-default py-10 px-16 font-serif'>
         <SignupForm handleLogin={handleLogin} />
         {loginButton}
     </div>
