@@ -10,6 +10,10 @@ function SignupForm({ handleLogin }) {
         first_name: "",
         last_name: ""
       });
+    const [errors, setErrors] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+
+    console.log(errors)
     
     let navigate = useNavigate()
 
@@ -41,12 +45,18 @@ function SignupForm({ handleLogin }) {
             method: "POST",
             body: (fd),
           })
-            .then((r) => r.json())
-            .then((user) => {
-                handleLogin(user, formData)
-                navigate('/land')
-            })
-        }  
+          .then((r) => {
+            setIsLoading(false);
+            if (r.ok) {
+              r.json().then((user) => {
+                  handleLogin(user)
+                  navigate('/land')
+              });
+            } else {
+              r.json().then((err) => setErrors(err.errors));
+            }
+          });
+        } 
   
     return (
         <div>
@@ -55,6 +65,7 @@ function SignupForm({ handleLogin }) {
                 <label htmlFor="first_name">First Name:</label>
                 <input
                     className="font-serif w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"
+                    required
                     type="text"
                     name="first_name"
                     value={formData.first_name}
@@ -63,6 +74,7 @@ function SignupForm({ handleLogin }) {
                 <label htmlFor="last_name">Last Name:</label>
                 <input
                     className="font-serif w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"
+                    required
                     type="text"
                     name="last_name"
                     value={formData.last_name}
@@ -71,6 +83,7 @@ function SignupForm({ handleLogin }) {
                 <label htmlFor="email">Email Address:</label>
                 <input
                     className="font-serif w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"
+                    required
                     type="email"
                     name="email"
                     value={formData.email}
@@ -79,6 +92,7 @@ function SignupForm({ handleLogin }) {
                 <label htmlFor="username">Desired Username:</label>
                 <input
                     className="font-serif w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"
+                    required
                     type="text"
                     name="username"
                     value={formData.username}
@@ -87,6 +101,7 @@ function SignupForm({ handleLogin }) {
                 <label htmlFor="password">Password:</label>
                 <input
                     className="font-serif w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"
+                    required
                     type="password"
                     name="password"
                     value={formData.password}
@@ -95,6 +110,7 @@ function SignupForm({ handleLogin }) {
                 <label htmlFor="password_confirmation">Confirm Password:</label>
                 <input
                     className="font-serif w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4"
+                    required
                     type="password"
                     name="password_confirmation"
                     value={formData.password_confirmation}
@@ -102,12 +118,18 @@ function SignupForm({ handleLogin }) {
                 />
                 <input
                     className="font-serif w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4" 
+                    required
                     type="file" 
                     name="profile_image"
                     accept="image/png, image/jpeg" 
                     onChange={handleFormChange} 
                 />
-                <button type="submit" className="m-auto font-serif w-full text-center py-1 px-2 mt-6 bg-green-200 rounded-full text-base hover:bg-green-400 transition duration-300 ease-in-out">Submit</button>
+                <button type="submit" className="m-auto font-serif w-full text-center py-1 px-2 mt-6 bg-green-200 rounded-full text-base hover:bg-green-400 transition duration-300 ease-in-out">{isLoading ? "Loading..." : "Sign Up"}</button>
+                <div className="text-red-500 text-center mt-2">
+                    {errors.map((err) => (
+                        <p key={err}>{err}</p>
+                    ))}
+                </div>
             </form>
         </div>
     )

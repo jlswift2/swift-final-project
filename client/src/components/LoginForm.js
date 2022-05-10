@@ -6,6 +6,8 @@ function LoginForm({ handleLogin }) {
         username: "",
         password: "",
       });
+    const [errors, setErrors] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     let navigate = useNavigate()
 
@@ -25,11 +27,18 @@ function LoginForm({ handleLogin }) {
             },
             body: JSON.stringify(formData),
           })
-            .then((r) => r.json())
-            .then((user) => {
-                handleLogin(user)
-                navigate('/land')
-            });
+          .then((r) => {
+            setIsLoading(false);
+            if (r.ok) {
+              r.json().then((user) => {
+                handleLogin(user);
+              console.log("logged in");
+              navigate('/land')
+            })
+            } else {
+              r.json().then((err) => setErrors(err.errors));
+            }
+          });
         }
   
   
@@ -53,7 +62,14 @@ function LoginForm({ handleLogin }) {
                 value={formData.password}
                 onChange={handleFormChange}
             />
-            <button className="m-auto font-serif w-full text-center py-1 px-2 mt-6 bg-green-200 rounded-full text-base hover:bg-green-400 transition duration-300 ease-in-out" type="submit">Submit</button>
+            <button className="m-auto font-serif w-full text-center py-1 px-2 mt-6 bg-green-200 rounded-full text-base hover:bg-green-400 transition duration-300 ease-in-out" type="submit">
+                {isLoading ? "Loading..." : "Login"}
+            </button>
+            <div className="text-red-500 text-center">
+                {errors.map((err) => (
+                    <p key={err}>{err}</p>
+                ))}
+            </div>
         </form>
     </div>
     )
