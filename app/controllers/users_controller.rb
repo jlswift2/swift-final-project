@@ -3,12 +3,13 @@ class UsersController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
   
   def create
-      user = User.create(user_params)
+      user = User.create!(user_params)
+      byebug
       if user.valid?
           user.friend_code = SecureRandom.hex(5)
           user.save
-          render json: user, status: :created
           session[:user_id] = user.id 
+          render json: user, status: :created
       else
         render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
       end
