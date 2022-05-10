@@ -6,7 +6,7 @@ function RecipeCard({ recipe }) {
   let navigate = useNavigate()
   let tags = recipe.tags.map(tag => {
     return(
-      <span className="text-xs float-right font-semibold inline-block py-1 px-2 uppercase rounded text-violet-600 bg-violet-200 last:ml-0 ml-1">
+      <span key={tag.id} className="text-xs float-right font-semibold inline-block py-1 px-2 uppercase rounded text-violet-600 bg-violet-200 last:ml-0 ml-1">
         {tag.title}
       </span>
     )
