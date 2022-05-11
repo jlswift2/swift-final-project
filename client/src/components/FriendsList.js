@@ -13,7 +13,7 @@ function FriendsList({ user }) {
     }, [user])
 
     let friend = friends.map(friend => {
-        return(<Friend friend={friend} />)
+        return(<Friend key={friend.username} friend={friend} />)
     })
 
     return (
