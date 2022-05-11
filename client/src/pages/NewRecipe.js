@@ -11,6 +11,7 @@ function NewRecipe({ user }) {
     const [steps, setSteps] = useState(["start here"])
     const [ingredients, setIngredients] = useState([{ingredient: "Enter Ingredient", quantity: "1", measurement: "LB"}])
     const [tags, setTags] = useState(["Enter tags here"])
+    let navigate = useNavigate()
 
     function handleFormChange (e) {
         if (e.target.name === "recipe_image") {
@@ -96,7 +97,7 @@ function NewRecipe({ user }) {
             body: JSON.stringify(newform),
         })
         .then((r) => r.json())
-        .then((data) => console.log(data))
+        .then((data) => navigate('/land'))
     }
 
     return(

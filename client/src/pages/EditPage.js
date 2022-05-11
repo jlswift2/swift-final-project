@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import IngredientsForm from '../components/IngredientsForm';
 import NewRecipeForm from '../components/NewRecipeForm';
 import Steps from '../components/Steps';
@@ -12,6 +12,7 @@ function EditPage({ user }) {
     const [ingredients, setIngredients] = useState([{ingredient: "Enter Ingredient", quantity: "1", measurement: "LB"}])
     const [tags, setTags] = useState(["Enter tags here"])
     const {recipeId} = useParams()
+    let navigate = useNavigate()
 
     useEffect(() =>{
         fetch(`/recipes/${recipeId}`)
@@ -128,7 +129,7 @@ function EditPage({ user }) {
             body: JSON.stringify(newform),
         })
         .then((r) => r.json())
-        .then((data) => console.log(data))
+        .then((data) => navigate('/land'))
     }
 
     return(
