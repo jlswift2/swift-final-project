@@ -9,10 +9,10 @@ import Recipe from "./pages/Recipe";
 import { useState, useEffect } from "react";                                                           
 import FriendRBRecipes from "./components/FriendRBRecipes";
 import NewRecipe from "./pages/NewRecipe";
+import EditPage from "./pages/EditPage";
 
 function App() {
   const [user, setUser] = useState(null);
-  // user={user} setUser={setUser}
 
   useEffect(() => {
     fetch("/me").then((response) => {
@@ -40,6 +40,8 @@ function App() {
           <Route path="recipes">
             <Route index element={<RecipesBook user={user}/>} />
             <Route path=":recipeId" element={<Recipe />} />
+            <Route path=":recipeId/edit" element={<EditPage />} />
+
             <Route path="new" element={<NewRecipe user={user} />} /> 
             <Route path="friends/:friendId" element={<FriendRBRecipes user={user}/>} /> 
           </Route>
