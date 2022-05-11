@@ -34,9 +34,20 @@ function Recipe() {
         return(<li key={ing.id}>{ing.quantity} {ing.measurement ? ing.measurement : null} {ing.ingredient.name}</li>)
       })} else {
         ingredients = "loading"
-      }
+    }
 
-    console.log(ingredients)
+    function handleDelete(e) {
+      fetch(`${recipe.id}`, {
+        method: "DELETE",
+      })
+      .then((r) => r.json())
+      .then((data) => navigate("/land"))
+    }
+
+    function handleEdit(e) {
+      navigate(`edit`)
+    }
+    
 
 
 
@@ -73,6 +84,11 @@ function Recipe() {
             {steps}
           </ul>
         </div>
+
+      </div>
+      <div className="w-1/2 m-auto text-center mt-12">
+        <button type="button" className="text-white rounded-lg bg-blue-300 mx-5 px-2 py-1" onClick={handleEdit}>Edit Recipe</button>
+        <button type="button" className="text-white rounded-lg bg-red-500 mx-5 px-2 py-1" onClick={handleDelete}>Delete Recipe</button>
       </div>
     </div>
   )
