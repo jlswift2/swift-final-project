@@ -116,6 +116,7 @@ function SignupForm({ handleLogin }) {
                     value={formData.password_confirmation}
                     onChange={handleFormChange}
                 />
+                <label htmlFor="profile_image">Upload a Profile Image:</label>
                 <input
                     className="font-serif w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4" 
                     required
