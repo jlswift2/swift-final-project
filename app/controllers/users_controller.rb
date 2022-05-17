@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
   def find_friend
     friend = User.find_by(id: params[:friendId])
-    render json: friend, include: ['recipes', 'recipes.tags'], status: :ok
+    render json: friend, serializer: FriendSerializer, include: ['recipes', 'recipes.tags']
   end
   
   private
