@@ -20,12 +20,12 @@ function RecipeCard({ recipe }) {
     <div className="flex flex-col justify-between p-8 transition-shadow bg-white rounded overflow-hidden shadow-gray-600 shadow-xl group hover:shadow-lg" onClick={handleClick}>
       <div>
         <h3 className="font-serif text-xl font-bold text-center">{recipe.name}</h3>
-        <div class="border-t-2 border-indigo-100">
+        <div className="border-t-2 border-indigo-100">
           <h4 className="font-serif mt-4 italic text-lg justify-left">{recipe.description}</h4>
         </div>
       </div>
-      <div class="inline-flex items-center mt-16 text-indigo-600 justify-end">
-        <p class="text-lg font-medium">{tags}</p>
+      <div className="inline-flex items-center mt-16 text-indigo-600 justify-end">
+        <p className="text-lg font-medium">{tags}</p>
       </div>
     </div>
   )
