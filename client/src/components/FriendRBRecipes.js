@@ -8,15 +8,22 @@ function FriendRBRecipes({ user }) {
     const { friendId } = useParams()
 
     useEffect( () => {
-        if (user) {
-            fetch(`/friends/${friendId}`)
-            .then(resp => resp.json())
-            .then(data => {
-                setRecipes(data.recipes)
-                setFriend(data)
-            })
-        }
-    }, [user, friendId])
+        fetch(`/friends/${friendId}`)
+        .then(resp => resp.json())
+        .then(data => {
+            setRecipes(data.recipes)
+            setFriend(data)
+        })
+        // if (user) {
+        //     fetch(`/friends/${friendId}`)
+        //     .then(resp => resp.json())
+        //     .then(data => {
+        //         console.log(data)
+        //         // setRecipes(data.recipes)
+        //         setFriend(data)
+        //     })
+        // }
+    }, [friendId])
 
     return (
     <div>
