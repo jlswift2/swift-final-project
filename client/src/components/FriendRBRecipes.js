@@ -4,7 +4,6 @@ import RecipeCard from './RecipeCard';
 
 function FriendRBRecipes({ user, query, setFriend }) {
     const [recipes, setRecipes] = useState([])
-    // const [friend, setFriend] = useState({})
     const { friendId } = useParams()
 
     useEffect( () => {
@@ -14,16 +13,7 @@ function FriendRBRecipes({ user, query, setFriend }) {
             setRecipes(data.recipes)
             setFriend(data)
         })
-        // if (user) {
-        //     fetch(`/friends/${friendId}`)
-        //     .then(resp => resp.json())
-        //     .then(data => {
-        //         console.log(data)
-        //         // setRecipes(data.recipes)
-        //         setFriend(data)
-        //     })
-        // }
-    }, [friendId])
+    }, [friendId, setFriend])
 
     const filteredRecipes = recipes.filter(recipe => {
         if (recipe.name === "") {
