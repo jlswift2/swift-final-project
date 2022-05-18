@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import FriendRBRecipes from '../components/FriendRBRecipes'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import SearchBar from '../components/SearchBar'
 
 function FriendRBPage({ user }) {
   const [query, setQuery] = useState("")
   const [friend, setFriend] = useState({})
-  let navigate = useNavigate()
 
   return (
     <div className="mt-10">
