@@ -7,7 +7,7 @@ import LandingPage from './pages/LandingPage'
 import RecipesBook from './pages/RecipesBook'
 import Recipe from "./pages/Recipe";
 import { useState, useEffect } from "react";                                                           
-import FriendRBRecipes from "./components/FriendRBRecipes";
+import FriendRBPage from "./pages/FriendRBPage";
 import NewRecipe from "./pages/NewRecipe";
 import EditPage from "./pages/EditPage";
 
@@ -43,7 +43,7 @@ function App() {
             <Route path=":recipeId/edit" element={<EditPage />} />
 
             <Route path="new" element={<NewRecipe user={user} />} /> 
-            <Route path="friends/:friendId" element={<FriendRBRecipes user={user}/>} /> 
+            <Route path="friends/:friendId" element={<FriendRBPage user={user}/>} /> 
           </Route>
 
         </Route>
