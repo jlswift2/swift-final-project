@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 function Recipe() {
     const {recipeId} = useParams()
     const [recipe, setRecipe] = useState(null)
+    const [user, setUser] = useState(null)
     const navigate = useNavigate();
 
     useEffect(() =>{
@@ -11,6 +12,16 @@ function Recipe() {
       .then(resp => resp.json())
       .then(data => setRecipe(data))
     }, [recipeId])
+
+    useEffect(() => {
+      fetch("/me").then((response) => {
+        if (response.ok) {
+          response.json().then((user) => setUser(user));
+        } else {
+          console.log('oop!')
+        }
+      });
+    }, [])
     
     let tags
     if (recipe) {
@@ -36,6 +47,23 @@ function Recipe() {
         ingredients = "loading"
     }
 
+    let buttons
+    if(user) {
+      if(recipe.user_id === user.id) {
+        buttons = (      
+          <div className="w-1/2 m-auto text-center mt-12">
+            <button type="button" className="text-white rounded-lg bg-blue-300 mx-5 px-2 py-1" onClick={handleEdit}>Edit Recipe</button>
+            <button type="button" className="text-white rounded-lg bg-red-500 mx-5 px-2 py-1" onClick={handleDelete}>Delete Recipe</button>
+          </div>
+        )
+      } else {
+        buttons = null
+      }
+    }
+
+    console.log(recipe)
+    console.log(user)
+
     function handleDelete(e) {
       fetch(`${recipe.id}`, {
         method: "DELETE",
@@ -48,9 +76,6 @@ function Recipe() {
       navigate(`edit`)
     }
     
-
-
-
     return (
     <div className="mt-10">
       <div>
@@ -86,10 +111,7 @@ function Recipe() {
         </div>
 
       </div>
-      <div className="w-1/2 m-auto text-center mt-12">
-        <button type="button" className="text-white rounded-lg bg-blue-300 mx-5 px-2 py-1" onClick={handleEdit}>Edit Recipe</button>
-        <button type="button" className="text-white rounded-lg bg-red-500 mx-5 px-2 py-1" onClick={handleDelete}>Delete Recipe</button>
-      </div>
+      {buttons}
     </div>
   )
 }
