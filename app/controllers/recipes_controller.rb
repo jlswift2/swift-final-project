@@ -8,8 +8,9 @@ class RecipesController < ApplicationController
     end
 
     def user_recipes_limited
-        user = User.find_by(id: params[:id])
-        recipes = user.recipes.last(3).reverse
+        # user = User.find_by(id: params[:id])
+        # recipes = user.recipes.last(3).reverse
+        recipes = Recipe.where(user_id: params[:id]).last(3).reverse
         render json: recipes, status: :ok
     end
 
