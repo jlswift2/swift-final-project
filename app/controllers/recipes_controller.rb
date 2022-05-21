@@ -15,8 +15,9 @@ class RecipesController < ApplicationController
     end
 
     def user_recipes_all
-        user = User.find_by(id: params[:id])
-        recipes = user.recipes.reverse
+        # user = User.find_by(id: params[:id])
+        # recipes = user.recipes.reverse
+        recipes = Recipe.where(user_id: params[:id])
         render json: recipes, status: :ok
     end
 
